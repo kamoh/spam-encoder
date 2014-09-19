@@ -43,7 +43,7 @@ Phrases
 Character substitution
 
   - Figure out different frequencies for different characters and add additional substitutions to retain variety
-
+    Reference - http://www.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html
 
 
 
