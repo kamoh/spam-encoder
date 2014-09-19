@@ -1,5 +1,5 @@
-Spam Encoder
 ==
+Spam Encoder
 
 App that lets you code secret messages as spam emails.
 
