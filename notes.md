@@ -45,7 +45,13 @@ Character substitution
   - Figure out different frequencies for different characters and add additional substitutions to retain variety
     Reference - http://www.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html
 
+user flow
 
+  - go to site
+  - input message 
+  - click 'encode to spam'
+  - jquery to grab original message from text box, ajax to send to server & translate
+  - 
 
 
 
