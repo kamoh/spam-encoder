@@ -1,7 +1,11 @@
 class Message < ActiveRecord::Base
 
   def encode_message(message)
-    "#{message} from Ruby!" # stubbed method to return the same message
+    "#{message} encoded from Ruby!"
   end
 
+  def decode_message(message)
+    "#{message} decoded from Ruby!"
+  end
+  
 end
