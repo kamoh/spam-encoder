@@ -1,3 +1,10 @@
+process
+  - stubbed out page
+  - stubbed encode & decode requests in ajax and jquery
+  - stubbed out encode and decode methods in model
+  - encountered 414 error, message too large
+
+
 - Way to encode messages as spam messages
 
 Stack
