@@ -70,7 +70,7 @@ class Message < ActiveRecord::Base
     when "|"
       "alsfh "
     else
-      letter
+      "#{letter} "
     end
   end
 
@@ -141,12 +141,12 @@ class Message < ActiveRecord::Base
       "y"
     when "slfhslk "
       "z"
-    when " "
-      " "
+    # when " "
+    #   "|"
     when "alsfh "
       "|"
     else
-      letter
+      letter.gsub(" ","")
     end
   end
 
