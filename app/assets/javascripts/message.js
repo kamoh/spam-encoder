@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  // Send message to Rails to be translated
+  // Send message to Rails to be encoded
 
   $("input").eq(0).click(function(){
 
@@ -23,6 +23,8 @@ $(document).ready(function(){
       }
     })
   });
+
+  // Send message to Rails to be decoded
 
   $("input").eq(1).click(function(){
 

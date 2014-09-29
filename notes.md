@@ -1,8 +1,21 @@
-process
+Dev process
   - stubbed out page
   - stubbed encode & decode requests in ajax and jquery
   - stubbed out encode and decode methods in model
   - encountered 414 error, message too large
+  - naive implementation with chained gsubs to replace letters, but snowballed
+  - broke into two case statements, but but works better
+  - want to come up with a way to do phrase parsing
+  - want to change to hash data structure from case statement for better efficiency, and also to manage multiple possible code words/phrases
+
+Todo
+
+  - change data structure from case statement to hash 
+  - incorporate way to reliably select a phrase from the hash value for each letter
+  - incorporate a way to decode phrases instead of single code words
+
+
+
 
 
 - Way to encode messages as spam messages

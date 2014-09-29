@@ -3,72 +3,77 @@ class Message < ActiveRecord::Base
   def encode_message(message)
     new_message = []
     message.gsub(" ","|").split("").each do |letter|
-      # binding.pry
-      new_message << (replace_letter_encode(letter))
+      new_message << (encode_letter_replace(letter))
     end
-    # binding.pry
-    new_message.join("").gsub("|","")
-    # ("a".."z").to_a.each do |e| 
-    #   puts e 
-    # end
+    add_spaces(new_message)
+    new_message.insert(-5,"\n\n").join("")
   end
 
-  def replace_letter_encode(letter)
+  def add_spaces(message)
+    num_spaces = message.length/24.floor
+    i = 0
+    num_spaces.times do |chunk|
+      message.insert(i+4,"\n\n")
+      i += 3 + (i + 5)
+    end
+  end
+
+  def encode_letter_replace(letter)
     case letter
     when "a"
-      "slfhslk "
+      "cialis "
     when "b"
-      "xulvww "
+      "loans "
     when "c"
-      "asfxv "
+      "enhancement "
     when "d"
-      "avxv "
+      "pills "
     when "e"
-      "fasfsa "
+      "sale "
     when "f"
-      "trr "
+      "nigeria "
     when "g"
-      "vadwvwv "
+      "deals "
     when "h"
-      "fasdfasf "
+      "hundred "
     when "i"
-      "sasdfas "
+      "Canadian "
     when "j"
-      "2hd "
+      "swing "
     when "k"
-      "fav "
+      "FAST "
     when "l"
-      "jdfn "
+      "tremendous "
     when "m"
-      "dbxb "
+      "LIMITED "
     when "n"
-      "jfj "
+      "funds "
     when "o"
-      "p;lkj "
+      "~~! "
     when "p"
-      ".xmv "
+      "great "
     when "q"
-      "832ff "
+      "business "
     when "r"
-      "pashf "
+      "opportunity "
     when "s"
-      "kjpfsa "
+      "fields "
     when "t"
-      "fkjslpnv "
+      "calling "
     when "u"
-      "kcnpai "
+      "sales "
     when "v"
-      "fni2f "
+      "act "
     when "w"
-      "dsif9 "
+      "did "
     when "x"
-      "fisaohf "
+      "right "
     when "y"
-      "0s8fu "
+      "main "
     when "z"
-      "slfhslk "
+      "scandal "
     when "|"
-      "alsfh "
+      "the "
     else
       "#{letter} "
     end
@@ -77,73 +82,69 @@ class Message < ActiveRecord::Base
   def decode_message(message)
     original_message = []
     message.split(" ").each do |codeword|
-      # binding.pry
-      original_message << (replace_letter_decode("#{codeword} "))
+      original_message << (decode_letter_replace("#{codeword} "))
     end
-    # binding.pry
     original_message.join("").gsub("|"," ")
     # ("a".."z").to_a.each do |e| 
     #   puts e 
     # end
   end
 
-  def replace_letter_decode(letter)
+  def decode_letter_replace(letter)
     case letter
-    when "slfhslk "
+    when "cialis "
       "a"
-    when "xulvww "
+    when "loans "
       "b"
-    when "asfxv "
+    when "enhancement "
       "c"
-    when "avxv "
+    when "pills "
       "d"
-    when "fasfsa "
+    when "sale "
       "e"
-    when "trr "
+    when "nigeria "
       "f"
-    when "vadwvwv "
+    when "deals "
       "g"
-    when "fasdfasf "
+    when "hundred "
       "h"
-    when "sasdfas "
+    when "Canadian "
       "i"
-    when "2hd "
+    when "swing "
       "j"
-    when "fav "
+    when "FAST "
       "k"
-    when "jdfn "
+    when "tremendous "
       "l"
-    when "dbxb "
+    when "LIMITED "
       "m"
-    when "jfj "
+    when "funds "
       "n"
-    when "p;lkj "
+    when "~~! "
       "o"
-    when ".xmv "
+    when "great "
       "p"
-    when "832ff "
+    when "business "
       "q"
-    when "pashf "
+    when "opportunity "
       "r"
-    when "kjpfsa "
+    when "fields "
       "s"
-    when "fkjslpnv "
+    when "calling "
       "t"
-    when "kcnpai "
+    when "sales "
       "u"
-    when "fni2f "
+    when "act "
       "v"
-    when "dsif9 "
+    when "did "
       "w"
-    when "fisaohf "
+    when "right "
       "x"
-    when "0s8fu "
+    when "main "
       "y"
-    when "slfhslk "
+    when "scandal "
       "z"
-    # when " "
-    #   "|"
-    when "alsfh "
+    when "the "
       "|"
     else
       letter.gsub(" ","")
@@ -152,5 +153,3 @@ class Message < ActiveRecord::Base
 
 
 end
-
-# "this is a test message"
