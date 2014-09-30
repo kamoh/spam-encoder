@@ -89,7 +89,8 @@ class Message < ActiveRecord::Base
   end
 
   def remove_spaces(message)
-    message.gsub("\n","baloneys ").split(" ").join(" ").gsub("baloneys ","")
+    # binding.pry
+    message.gsub("\n","baloneys ").split(" ").join(" ").gsub("baloneys ","").gsub("baloneys","")
   end
 
   def message_reverse_engineer(message)
