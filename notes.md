@@ -8,6 +8,7 @@ Dev process
   - want to come up with a way to do phrase parsing
   - want to change to hash data structure from case statement for better efficiency, and also to manage multiple possible code words/phrases
   - added support for carriage return character, %A0
+  - fix method for adding extra white spaces - too much white spaces at the end for bigger messages
 
 Todo
 
