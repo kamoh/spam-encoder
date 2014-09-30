@@ -10,7 +10,7 @@ class Message < ActiveRecord::Base
   end
 
   def add_spaces(message)
-    num_spaces = message.length/16.floor 
+    num_spaces = message.length/20.floor 
     i = 0
     num_spaces.times do |chunk|
       message.insert(i+4,"\n\n")
@@ -89,7 +89,7 @@ class Message < ActiveRecord::Base
   end
 
   def remove_spaces(message)
-    message.gsub("\n\n","baloneys ").split(" ").join(" ").gsub("baloneys ","")
+    message.gsub("\n","baloneys ").split(" ").join(" ").gsub("baloneys ","")
   end
 
   def message_reverse_engineer(message)
