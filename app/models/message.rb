@@ -84,6 +84,7 @@ class Message < ActiveRecord::Base
 
   def decode_message(message)
     nm = remove_spaces(message)
+    nm << " "
     message_reverse_engineer(nm).gsub!("‡"," ")
   end
 
