@@ -2,7 +2,8 @@ class Message < ActiveRecord::Base
 
   def encode_message(message)
     new_message = []
-    message.gsub(" ","|").split("").each do |letter|
+    message.gsub(" ","|").gsub(/\n/,"♤").split("").each do |letter|
+      # binding.pry
       new_message << (encode_letter_replace(letter))
     end
     add_spaces(new_message)
@@ -74,6 +75,8 @@ class Message < ActiveRecord::Base
       "scandal "
     when "|"
       "the "
+    when "♤"
+      "tremmel "
     else
       "#{letter} "
     end
@@ -146,6 +149,8 @@ class Message < ActiveRecord::Base
       "z"
     when "the "
       "|"
+    when "tremmel "
+      "\n"
     else
       letter.gsub(" ","")
     end
