@@ -6,16 +6,17 @@ class Message < ActiveRecord::Base
       new_message << (encode_letter_replace(letter))
     end
     add_spaces(new_message)
-    new_message.insert(-5,"\n\n").join("")
+    new_message.join("")
   end
 
   def add_spaces(message)
-    num_spaces = message.length/24.floor
+    num_spaces = message.length/16.floor 
     i = 0
     num_spaces.times do |chunk|
       message.insert(i+4,"\n\n")
       i += 3 + (i + 5)
     end
+    message
   end
 
   def encode_letter_replace(letter)
@@ -35,7 +36,7 @@ class Message < ActiveRecord::Base
     when "g"
       "deals "
     when "h"
-      "hundred "
+      "bits "
     when "i"
       "Canadian "
     when "j"
@@ -77,83 +78,49 @@ class Message < ActiveRecord::Base
     when "♤"
       "tremmel "
     else
-      "#{letter} "
+      "#{letter}"
     end
   end
 
   def decode_message(message)
-    original_message = []
-    message.split(" ").each do |codeword|
-      original_message << (decode_letter_replace("#{codeword} "))
-    end
-    original_message.join("").gsub("‡"," ")
-    # ("a".."z").to_a.each do |e| 
-    #   puts e 
-    # end
+    nm = remove_spaces(message)
+    message_reverse_engineer(nm).gsub!("‡"," ")
   end
 
-  def decode_letter_replace(letter)
-    case letter
-    when "cialis "
-      "a"
-    when "loans "
-      "b"
-    when "enhancement "
-      "c"
-    when "pills "
-      "d"
-    when "sale "
-      "e"
-    when "nigeria "
-      "f"
-    when "deals "
-      "g"
-    when "hundred "
-      "h"
-    when "Canadian "
-      "i"
-    when "swing "
-      "j"
-    when "FAST "
-      "k"
-    when "tremendous "
-      "l"
-    when "LIMITED "
-      "m"
-    when "funds "
-      "n"
-    when "~~! "
-      "o"
-    when "great "
-      "p"
-    when "business "
-      "q"
-    when "opportunity "
-      "r"
-    when "fields "
-      "s"
-    when "calling "
-      "t"
-    when "sales "
-      "u"
-    when "act "
-      "v"
-    when "did "
-      "w"
-    when "right "
-      "x"
-    when "main "
-      "y"
-    when "scandal "
-      "z"
-    when "the "
-      "‡"
-    when "tremmel "
-      "\n"
-    else
-      letter.gsub(" ","")
-    end
+  def remove_spaces(message)
+    message.gsub("\n\n","baloneys ").split(" ").join(" ").gsub("baloneys ","")
   end
 
+  def message_reverse_engineer(message)
+    message.gsub!("cialis ","a")
+    message.gsub!("loans ","b")
+    message.gsub!("enhancement ","c")
+    message.gsub!("pills ","d")
+    message.gsub!("sale ","e")
+    message.gsub!("nigeria ","f")
+    message.gsub!("deals ","g")
+    message.gsub!("bits ","h")
+    message.gsub!("Canadian ","i")
+    message.gsub!("swing ","j")
+    message.gsub!("FAST ","k")
+    message.gsub!("tremendous ","l")
+    message.gsub!("LIMITED ","m")
+    message.gsub!("funds ","n")
+    message.gsub!("~~! ","o")
+    message.gsub!("great ","p")
+    message.gsub!("business ","q")
+    message.gsub!("opportunity ","r")
+    message.gsub!("fields ","s")
+    message.gsub!("calling ","t")
+    message.gsub!("sales ","u")
+    message.gsub!("act ","v")
+    message.gsub!("did ","w")
+    message.gsub!("right ","x")
+    message.gsub!("main ","y")
+    message.gsub!("scandal ","z")
+    message.gsub!("the ","‡")
+    message.gsub!("tremmel ","\n")
+    message
+  end
 
 end
