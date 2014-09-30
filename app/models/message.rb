@@ -2,8 +2,7 @@ class Message < ActiveRecord::Base
 
   def encode_message(message)
     new_message = []
-    message.gsub(" ","|").gsub(/\n/,"♤").split("").each do |letter|
-      # binding.pry
+    message.gsub(" ","‡").gsub(/\n/,"♤").split("").each do |letter|
       new_message << (encode_letter_replace(letter))
     end
     add_spaces(new_message)
@@ -73,7 +72,7 @@ class Message < ActiveRecord::Base
       "main "
     when "z"
       "scandal "
-    when "|"
+    when "‡"
       "the "
     when "♤"
       "tremmel "
@@ -87,7 +86,7 @@ class Message < ActiveRecord::Base
     message.split(" ").each do |codeword|
       original_message << (decode_letter_replace("#{codeword} "))
     end
-    original_message.join("").gsub("|"," ")
+    original_message.join("").gsub("‡"," ")
     # ("a".."z").to_a.each do |e| 
     #   puts e 
     # end
@@ -148,7 +147,7 @@ class Message < ActiveRecord::Base
     when "scandal "
       "z"
     when "the "
-      "|"
+      "‡"
     when "tremmel "
       "\n"
     else
