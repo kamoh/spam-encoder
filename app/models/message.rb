@@ -38,7 +38,7 @@ class Message < ActiveRecord::Base
     when "h"
       "bits "
     when "i"
-      "Canadian "
+      "German "
     when "j"
       "swing "
     when "k"
@@ -101,7 +101,7 @@ class Message < ActiveRecord::Base
     message.gsub!("nigeria ","f")
     message.gsub!("deals ","g")
     message.gsub!("bits ","h")
-    message.gsub!("Canadian ","i")
+    message.gsub!("German ","i")
     message.gsub!("swing ","j")
     message.gsub!("FAST ","k")
     message.gsub!("tremendous ","l")
