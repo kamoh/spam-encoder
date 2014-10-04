@@ -19,10 +19,15 @@ class Message < ActiveRecord::Base
     message
   end
 
+  def find_phrase(key)
+    phrases = ["once two ","test five seven "]
+    phrases[key]
+  end
+
   def encode_letter_replace(letter)
     case letter
     when "a"
-      "cialis "
+      find_phrase(1)
     when "b"
       "loans "
     when "c"
@@ -93,7 +98,7 @@ class Message < ActiveRecord::Base
   end
 
   def message_reverse_engineer(message)
-    message.gsub!("cialis ","a")
+    message.gsub!(find_phrase(1),"a")
     message.gsub!("loans ","b")
     message.gsub!("enhancement ","c")
     message.gsub!("pills ","d")
