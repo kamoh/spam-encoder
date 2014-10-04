@@ -6,7 +6,7 @@ class Message < ActiveRecord::Base
       new_message << (encode_letter_replace(letter))
     end
     add_spaces(new_message)
-    new_message.join("")
+    new_message.join("").strip
   end
 
   def add_spaces(message)
@@ -90,7 +90,7 @@ class Message < ActiveRecord::Base
   def decode_message(message)
     nm = remove_spaces(message)
     nm << " "
-    message_reverse_engineer(nm).gsub!("‡"," ")
+    message_reverse_engineer(nm).gsub!("‡"," ").strip
   end
 
   def remove_spaces(message)
