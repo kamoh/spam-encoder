@@ -6,6 +6,7 @@ class Message < ActiveRecord::Base
     @message_length_key = message.length.to_s[0].to_i
     new_message = []
     message.gsub(" ","‡").gsub(/\n/,"♤").split("").each do |letter|
+      # binding.pry
       new_message << (encode_letter_in_phrase(letter))
     end
     add_spaces(new_message)
@@ -24,9 +25,13 @@ class Message < ActiveRecord::Base
 
   def phrase_library(letter)
     library = {
-      a: ["ARIA/ARYA","OWEN","VIOLET","BENJAMIN","SOPHIA/SOFIA","DECLAN","SCARLETT/SCARLET","HENRY ","AUDREY","JACKSON/JAXON"]
+      a: ["ARIA/ARYA","OWEN","VIOLET","BENJAMIN","SOPHIA/SOFIA","DECLAN","SCARLETT/SCARLET","HENRY","AUDREY","JACKSON/JAXON"]
     }
     library[letter.to_sym]
+  end
+
+  def decode_to_letter(letter,phrase)
+    phrase_library(letter).select { |k,v| k if v.include?(phrase) }
   end
 
   def encode_letter_in_phrase(letter)
@@ -90,10 +95,6 @@ class Message < ActiveRecord::Base
     else
       "#{letter}"
     end
-    
-    phrases = ["once two ","test five seven "]
-
-    phrases[key]
   end
 
   def decode_message(message)
@@ -107,7 +108,7 @@ class Message < ActiveRecord::Base
   end
 
   def message_reverse_engineer(message)
-    # message.gsub!()
+    message.gsub!(phrase_library)
     message.gsub!(find_phrase(1),"a")
     message.gsub!("loans ","b")
     message.gsub!("enhancement ","c")
