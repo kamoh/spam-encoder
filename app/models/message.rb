@@ -1,13 +1,22 @@
 class Message < ActiveRecord::Base
 
+  attr_accessor :message
   attr_reader :message_length_key
 
-  @phrase_library = {
+  def library(input)
+    phrase_library = {
       a: ["ARYA ","OWEN ","VIOLET ","BENJAMIN ","SOPHIA ","DECLAN ","SCARLETT ","HENRY ","AUDREY ","JACKSON "]
     }
+    if !input[:letter].nil?
+      return phrase_library[input[:letter].to_sym]
+    else
+      return phrase_library.each { |k,v| message.gsub!(v,k) if v.include?(input[:phrase]) }
+    end
+  end
 
   def encode_message(message)
     @message_length_key = message.length.to_s[0].to_i
+    @message = message
     new_message = []
     message.gsub(" ","‡").gsub(/\n/,"♤").split("").each do |letter|
       new_message << (encode_letter_in_phrase(letter))
@@ -26,21 +35,22 @@ class Message < ActiveRecord::Base
     message
   end
 
-  def phrase_library(letter={}, operation,message={})
+  # def phrase_library(letter, operation, message)
     
     # if operation == "encode"
     #   return library[letter.to_sym]
     # else
-      return library.each { |k,v| message.gsub!(v,k) if v.include?(phrase) }
-    end
-  end
+      # return library.each { |k,v| message.gsub!(v,k) if v.include?(phrase) }
+    # end
+  # end
 
   def encode_letter_in_phrase(letter)
-    @phrase_library(letter.to_sym)[message_length_key]
+    # library[(letter.to_sym)][message_length_key]
 
+    # library(letter: letter)[message_length_key]
     case letter
     when "a"
-      @phrase_library(letter)[message_length_key]
+      library(letter: letter)[message_length_key]
     when "b"
       "loans "
     when "c"
@@ -101,6 +111,7 @@ class Message < ActiveRecord::Base
   end
 
   def decode_message(message)
+    @message = message
     nm = remove_spaces(message)
     nm << " "
     message_reverse_engineer(nm).gsub!("‡"," ").strip
