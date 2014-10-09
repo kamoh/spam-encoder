@@ -4,7 +4,7 @@ class Message < ActiveRecord::Base
 
   def library(input)
     phrase_library = {
-      a: ["buy now & forevar ","bucket ","tens ","thousands ","more and ","even more but ","butter is not enough ","for u and ","nineety ","the bees are everywhere "],
+      a: ["buy now & forevar ","bucket filled with ","tens of ","thousands ","more and ","even more but ","butter is not enough ","for u and ","ninety ","the bees are everywhere "],
       b: ["LOANS PRICE ","really? But ","Grand PRize Sweepstakes! ","say here? you don't call or write, ","grandmothers & papas together ","new car? Deserve it for her ","forgiven ZIPPO Status","Zipcar Hermes Vuitton","German Shepard Pit Bull ","barbequeue on Satanday ","threw down fifteen storeys"],
       c: ["enhancement For U ","owls planning ","can' wait to see you","Could you hold my tie ","Do a favor, a pall, a chum ","old schoolyard days ","big puff and expelled the ","hand it over! GUILTY ","urging to forget the BIG ","pumpkins savor the dishes "],
       d: ["enormously big ","cadillac FACTORY ","shop of wonderful ","Porcelain Televisions designed to ","so enticing! a worry, a dripping ","classifieds? Job now on website","learn GOETHE","Salisbury salmon catching ","classes all summer and winter ","Can't breathe? Try "],
@@ -66,7 +66,7 @@ class Message < ActiveRecord::Base
       ♤: ["tremendous ","crispy ","believer of ","witness ","broken-down ","- but - ","stood ","rocky ","shipwreck ","hambone "]
     }
     if !input[:letter].nil?
-      @message_length_key += 1
+      @message_length_key += 3
       @message_length_key -= 11 if @message_length_key > 9
       if !phrase_library[input[:letter].to_sym].nil?
         return phrase_library[input[:letter].to_sym][@message_length_key]
