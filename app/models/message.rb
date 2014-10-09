@@ -38,7 +38,7 @@ class Message < ActiveRecord::Base
       F: ["street fighter champion ","sandwich makeur ","parkour inside? Never ","all of the ","kitschy organic gerbil ","rum raisin-turned ","tax collector and ","tiddlywinks world pennant ","corn enthusiast ","sleepwalking submarine rudness "],
       G: ["THE MOON ","fifteen goods ","your money back? And how ",". You can definitely try ","what ails ya? ","Did you even try ","pull it back to the left ","Deli Cafe open all night ","try the scrambled Joes ","coffee on an roll "],
       H: ["marmalade witches ","carpentry bastards ","can't blame 'em for ","? Did they even ","smoking again, the ","cat has evacuated the luggage ","my dog, your godlet ","gibbon in a speedo ","no hang-ups about ","bad burritos and "],
-      I: ["forty cravens ","leopard queens ",". Listening is pointless, ","give a chance? Nope ","scratch it like just that ","couch dovetailing on ","smooth, glittery ","pumpernickel astronaut ","the next election cyclon ","clothing is underwearrated "], 
+      I: ["forty cravens ","leopard queens ",". Listening is pointless, ","give a chance? Nope ","scratch it like just that ","couch dovetailing on ","smooth, glittery ","pumpernickel astronaut ","the next election cyclon ","clothing is underwearrated ","astronomical mistakes "], 
       J: ["kign of crabs ","great good goblins ","movies and lessons about ","Norway's own ","tooth academy 5 ","pockets full of stencils ","catastrophy bag ",". Yesterday ","could you even ","ain't nobody got time for "],
       K: ["TODAY TODAY RIGTH AWAY ","god damn lies ","purely auto-tuned ","organic, low-fat ","baseball Jesus ","Facebreak from the book ","gibberish and religious fervor ","? On the table, a ","the FDA and ","take it away. "],
       L: ["pour another one ","FRANK MILLER's ","recombinant tricycle ","motordiaper for bikers ","serial television cleansing ","programming programs for ","ads in the bathroom hallways? ","can't no way, no how ","learn you to ","yeti houseboat "],
@@ -76,14 +76,18 @@ class Message < ActiveRecord::Base
       "\n" => ["tremendous ","crispy ","believer of ","witness ","broken-down ","- but - ","stood ","rocky ","shipwreck ","hambone "],
       ♤: ["tremendous ","crispy ","believer of ","witness ","broken-down ","- but - ","stood ","rocky ","shipwreck ","hambone "]
     }
+    # binding.pry
     if !input[:letter].nil?
       if !phrase_library[input[:letter].to_sym].nil?
+        # binding.pry
         return phrase_library[input[:letter].to_sym][@message_length_key]
       elsif !phrase_library[input[:letter]].nil?
+        # binding.pry
         return phrase_library[input[:letter]][@message_length_key]
       else
         return input[:letter]
       end
+      # binding.pry
     else
       phrase_library.each { |k,v| 
         v.each do |phrase|
@@ -100,8 +104,8 @@ class Message < ActiveRecord::Base
     @message = message
     new_message = []
     message.gsub(" ","‡").gsub(/\n/,"♤").split("").each do |letter|
-      @message_length_key += 1
       new_message << (encode_letter_in_phrase(letter))
+      @message_length_key += 1
       @message_length_key -= 11 if @message_length_key > 9
     end
     add_spaces(new_message)
