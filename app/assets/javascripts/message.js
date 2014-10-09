@@ -1,5 +1,26 @@
 $(document).ready(function(){
 
+  var charCount;
+
+  // Counts input for max 200-character limit
+  
+  function updateCharCount() {
+    charCount = $("#input_message").val().length;
+    $("#charcount").text("Characters left: " + (200-parseInt(charCount)));
+    if ($("#input_message").val().length > 200) {
+      var content = $("#input_message").val();
+      console.log("too many chars");
+    }
+  }
+
+  $("#input_message").keydown(function(e){
+    updateCharCount();
+  });
+  
+  $("#input_message").keyup(function(e){
+    updateCharCount();
+  });
+
   // Send message to Rails to be encoded
 
   $("input").eq(0).click(function(){
@@ -40,6 +61,7 @@ $(document).ready(function(){
         console.log("Ajax request successful");
         console.log("response: "+response);
         $("#input_message").val(response);
+        updateCharCount();
       },
       error: function(response){
         console.log("Ajax request failed");
