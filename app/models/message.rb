@@ -5,17 +5,52 @@ class Message < ActiveRecord::Base
 
   def library(input)
     phrase_library = {
-      a: ["ARYA ","OWEN ","VIOLET ","BENJAMIN ","SOPHIA ","DECLAN ","SCARLETT ","HENRY ","AUDREY ","JACKSON "]
+      a: ["ARYA "],
+      b: ["loans "],
+      c: ["enhancement "],
+      d: ["pills "],
+      e: ["sale "],
+      f: ["nigeria "],
+      g: ["deals "],
+      h: ["bits "],
+      i: ["Canadian "],
+      j: ["swing "],
+      k: ["FAST "],
+      l: ["tremendous "],
+      m: ["LIMITED "],
+      n: ["funds "],
+      o: ["~~! "],
+      p: ["great "],
+      q: ["business "],
+      r: ["opportunity "],
+      s: ["fields "],
+      t: ["calling "],
+      u: ["sales "],
+      v: ["act "],
+      w: ["did "],
+      x: ["right "],
+      y: ["main "],
+      z: ["scandal "],
+      ‡: ["the "],
+      "\n" => ["tremmel "],
+      ♤: ["tremmel "]
     }
     if !input[:letter].nil?
-      return phrase_library[input[:letter].to_sym]
+      return phrase_library[input[:letter].to_sym] if !phrase_library[input[:letter].to_sym].nil?
+      return input[:letter]
     else
-      return phrase_library.each { |k,v| message.gsub!(v,k) if v.include?(input[:phrase]) }
+      phrase_library.each { |k,v| 
+        v.each do |phrase|
+          message.gsub!(phrase,k.to_s) if message.include?(phrase)
+        end
+      }
+      message
     end
   end
 
   def encode_message(message)
-    @message_length_key = message.length.to_s[0].to_i
+    @message_length_key = 0
+    # @message_length_key = message.length.to_s[0].to_i
     @message = message
     new_message = []
     message.gsub(" ","‡").gsub(/\n/,"♤").split("").each do |letter|
@@ -35,125 +70,23 @@ class Message < ActiveRecord::Base
     message
   end
 
-  # def phrase_library(letter, operation, message)
-    
-    # if operation == "encode"
-    #   return library[letter.to_sym]
-    # else
-      # return library.each { |k,v| message.gsub!(v,k) if v.include?(phrase) }
-    # end
-  # end
-
   def encode_letter_in_phrase(letter)
-    # library[(letter.to_sym)][message_length_key]
-
-    # library(letter: letter)[message_length_key]
-    case letter
-    when "a"
-      library(letter: letter)[message_length_key]
-    when "b"
-      "loans "
-    when "c"
-      "enhancement "
-    when "d"
-      "pills "
-    when "e"
-      "sale "
-    when "f"
-      "nigeria "
-    when "g"
-      "deals "
-    when "h"
-      "bits "
-    when "i"
-      "Canadian "
-    when "j"
-      "swing "
-    when "k"
-      "FAST "
-    when "l"
-      "tremendous "
-    when "m"
-      "LIMITED "
-    when "n"
-      "funds "
-    when "o"
-      "~~! "
-    when "p"
-      "great "
-    when "q"
-      "business "
-    when "r"
-      "opportunity "
-    when "s"
-      "fields "
-    when "t"
-      "calling "
-    when "u"
-      "sales "
-    when "v"
-      "act "
-    when "w"
-      "did "
-    when "x"
-      "right "
-    when "y"
-      "main "
-    when "z"
-      "scandal "
-    when "‡"
-      "the "
-    when "♤"
-      "tremmel "
-    else
-      "#{letter}"
-    end
+    library(letter: letter)[message_length_key]
   end
 
   def decode_message(message)
     @message = message
-    nm = remove_spaces(message)
-    nm << " "
-    message_reverse_engineer(nm).gsub!("‡"," ").strip
+    @message = remove_spaces
+    @message << " "
+    message_reverse_engineer.gsub("‡"," ").strip
   end
 
-  def remove_spaces(message)
+  def remove_spaces
     message.gsub("\n","baloneys ").split(" ").join(" ").gsub("baloneys ","").gsub("baloneys","")
   end
 
-  def message_reverse_engineer(message)
-    
-
-    message.gsub!(phrase_library("decode",message))
-
-    message.gsub!(find_phrase(1),"a")
-    message.gsub!("loans ","b")
-    message.gsub!("enhancement ","c")
-    message.gsub!("pills ","d")
-    message.gsub!("sale ","e")
-    message.gsub!("nigeria ","f")
-    message.gsub!("deals ","g")
-    message.gsub!("bits ","h")
-    message.gsub!("Canadian ","i")
-    message.gsub!("swing ","j")
-    message.gsub!("FAST ","k")
-    message.gsub!("tremendous ","l")
-    message.gsub!("LIMITED ","m")
-    message.gsub!("funds ","n")
-    message.gsub!("~~! ","o")
-    message.gsub!("great ","p")
-    message.gsub!("business ","q")
-    message.gsub!("opportunity ","r")
-    message.gsub!("fields ","s")
-    message.gsub!("calling ","t")
-    message.gsub!("sales ","u")
-    message.gsub!("act ","v")
-    message.gsub!("did ","w")
-    message.gsub!("right ","x")
-    message.gsub!("main ","y")
-    message.gsub!("scandal ","z")
-    message.gsub!("the ","‡")
-    message.gsub!("tremmel ","\n")
+  def message_reverse_engineer
+    library(message: message)
     message
   end
 
