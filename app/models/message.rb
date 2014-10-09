@@ -5,38 +5,38 @@ class Message < ActiveRecord::Base
 
   def library(input)
     phrase_library = {
-      a: ["ARYA "],
-      b: ["loans "],
-      c: ["enhancement "],
-      d: ["pills "],
-      e: ["sale "],
-      f: ["nigeria "],
-      g: ["deals "],
-      h: ["bits "],
-      i: ["Canadian "],
-      j: ["swing "],
-      k: ["FAST "],
-      l: ["tremendous "],
-      m: ["LIMITED "],
-      n: ["funds "],
-      o: ["~~! "],
-      p: ["great "],
-      q: ["business "],
-      r: ["opportunity "],
-      s: ["fields "],
-      t: ["calling "],
-      u: ["sales "],
-      v: ["act "],
-      w: ["did "],
-      x: ["right "],
-      y: ["main "],
-      z: ["scandal "],
-      ‡: ["the "],
-      "\n" => ["tremmel "],
-      ♤: ["tremmel "]
+      a: ["ARYA ","bucket "],
+      b: ["loans ","hams "],
+      c: ["enhancement ","owls "],
+      d: ["pills ","putz "],
+      e: ["sale ","elbows "],
+      f: ["nigeria ","saddle "],
+      g: ["deals ","derf "],
+      h: ["bits ","flurf "],
+      i: ["Canadian ","couches "],
+      j: ["swing ","macaroni "],
+      k: ["FAST ","ikea "],
+      l: ["tremendous ","nokia "],
+      m: ["LIMITED ","vizio "],
+      n: ["funds ","vayagrao "],
+      o: ["~~! ","subway "],
+      p: ["great ","tunnel syndrome "],
+      q: ["business ","carpal "],
+      r: ["opportunity ","tarsal "],
+      s: ["fields ","salad "],
+      t: ["calling ","meats "],
+      u: ["sales ","bacons "],
+      v: ["act ","discounts "],
+      w: ["did ","short time "],
+      x: ["right ","freedom "],
+      y: ["main ","aprons "],
+      z: ["scandal ","conches "],
+      ‡: ["the ","bagel "],
+      "\n" => ["tremmel ","craps "],
+      ♤: ["tremmel ","craps "]
     }
     if !input[:letter].nil?
-      return phrase_library[input[:letter].to_sym] if !phrase_library[input[:letter].to_sym].nil?
+      return phrase_library[input[:letter].to_sym][message_length_key] if !phrase_library[input[:letter].to_sym].nil?
       return input[:letter]
     else
       phrase_library.each { |k,v| 
@@ -49,7 +49,7 @@ class Message < ActiveRecord::Base
   end
 
   def encode_message(message)
-    @message_length_key = 0
+    @message_length_key = 1
     # @message_length_key = message.length.to_s[0].to_i
     @message = message
     new_message = []
@@ -71,7 +71,7 @@ class Message < ActiveRecord::Base
   end
 
   def encode_letter_in_phrase(letter)
-    library(letter: letter)[message_length_key]
+    library(letter: letter)
   end
 
   def decode_message(message)
