@@ -12,7 +12,7 @@ class Message < ActiveRecord::Base
       f: ["Nigerian ","saddle and wearing a ","prime time for ","not? Gather your britches","drawing circles everyday ","free BANK ACCOUNT ","PERSONAL CHECKING BUSINESS CHEQUE ","investor quality? YEs ","terffic balance to get ","savings, a bust "],
       g: ["deals so good ughhh ","pillow table? ","gird up your loins ","I at once warn I not a spam! ","I can send you the photos on e-mail. ","briar patch 90 stalactites","Santiago, the friend of ","inferiority complex living with blood clot. ","explicit, yet full of romance ","ignore the dual voices, "],
       h: ["into teeny bits ","Peanutest butter! ","virtuous checkboox ","Chris is dead, Job for you! ","EVery 1 in 10 people ","You won ","solution you've been searching upon ","Maintain your weight. amputate ","yellow go wee wee ","ascent tampon of ultimate "],
-      i: ["only finest Canadian ","The most ","rich tapestry of luxury ","it will explode, guaranteed ","clam chowderriere ","A madam or madden ","valley of the ","Pokerbot says ","homelessness accreditation","official manhole bedtime "],
+      i: ["only finest Canadian ","The most ","rich tapestry of luxury ","it will explode, guaranteed ","clam chowderriere ","A madam or madden ","valley of the ","Pokerbot says ","homelessness accreditation ","official manhole bedtime "],
       j: ["swing and a ","Is that macaroni in your pockett or are you just ","kitten archbishop ","employ Batarangs all day ","just signup and understand you are a ",", come on! Fill the form and just ","infection taster ","snowman crying when ","12 inch rabbi","An cactus in feline ","join your life "],
       k: ["FAST GOOD ","ikea ","expedient toast ","a blind tingling ","the word of Neil ","sasquatch divorce ","new flavor? Pepsi ","real vaccination cowboy ","every cafe is a ","start that fire with your "],
       l: ["gargantuan fist of ","nokia n-gage ","Science has proven that every ","tapeworm bike ","taco tuesday in His Kingdom ","elementary fungus choices ","still-warm elephant underwear ","Spiderman Pharmacy ","chemical spill with ","ostrich kisses and/or hugs "],
@@ -38,7 +38,7 @@ class Message < ActiveRecord::Base
       F: ["street fighter champion ","sandwich makeur ","parkour inside? Never ","all of the ","kitschy organic gerbil ","rum raisin-turned ","tax collector and ","tiddlywinks world pennant ","corn enthusiast ","sleepwalking submarine rudness "],
       G: ["THE MOON ","fifteen goods ","your money back? And how ",". You can definitely try ","what ails ya? ","Did you even try ","pull it back to the left ","Deli Cafe open all night ","try the scrambled Joes ","coffee on an roll "],
       H: ["marmalade witches ","carpentry bastards ","can't blame 'em for ","? Did they even ","smoking again, the ","cat has evacuated the luggage ","my dog, your godlet ","gibbon in a speedo ","no hang-ups about ","bad burritos and "],
-      I: ["forty cravens ","leopard queens ",". Listening is pointless, ","give a chance? Nope ","scratch it like just that ","couch dovetailing on ","smooth, glittery ","pumpernickel astronaut ","the next election cyclon","clothing is underwearrated "], 
+      I: ["forty cravens ","leopard queens ",". Listening is pointless, ","give a chance? Nope ","scratch it like just that ","couch dovetailing on ","smooth, glittery ","pumpernickel astronaut ","the next election cyclon ","clothing is underwearrated "], 
       J: ["kign of crabs ","great good goblins ","movies and lessons about ","Norway's own ","tooth academy 5 ","pockets full of stencils ","catastrophy bag ",". Yesterday ","could you even ","ain't nobody got time for "],
       K: ["TODAY TODAY RIGTH AWAY ","god damn lies ","purely auto-tuned ","organic, low-fat ","baseball Jesus ","Facebreak from the book ","gibberish and religious fervor ","? On the table, a ","the FDA and ","take it away. "],
       L: ["pour another one ","FRANK MILLER's ","recombinant tricycle ","motordiaper for bikers ","serial television cleansing ","programming programs for ","ads in the bathroom hallways? ","can't no way, no how ","learn you to ","yeti houseboat "],
@@ -56,6 +56,17 @@ class Message < ActiveRecord::Base
       X: ["cartoon skips ","rabbit nightmare ","Sammy bologna ","skipped forever ","even in this neighborhood, ","my hairdresser, a lovely ","farmed out for the season? ","Apples and berries or something ",", stuck in Elevator with ","hours, going on and on about "],
       Y: ["Spike elevation ","film terrorist ","cardboard salmonella ","that raggedy supervisor, ","can't stand you either ","this side of things. If I could find ","dig around, or ","which aisle? Look up ","no smoking here, ","Stop dancing! "],
       Z: ["sandy bagelry ","lunch bonnet ","foreign uvula ","broken handlebar gum ","free jobs TOMORROW ","JOB JOB JOB ","goat reading glasses ","cocktail jammies ","post office gumption ","100% discounted mail-order "],
+      "0" => ["those lovely ","how could they! ","a burger? ","gallons galore ","stretched in the shade ","freshly-cut salmonella ","riverside layer ","cars parked and ","left out for days, ","and a two times and a "],
+      "1" => ["cartoon divorce court ","baked spleen casserole ","gargantuan raisinets ","a cantaloupe? Surely, ","tennis of all kinds ",". Belcher says ","a quarter of the time ","REFUNDS ",". Wait! But there's ","spinning the wheel "],
+      "2" => ["how many times? ","in the great cold ","alas, ","but not so fast ","little boy, ","you're going to ","one-way ticket to ","the golden chance to ","cunning turtles parked ","winter coat circus "],
+      "3" => ["smells like alienation? ","can't be, no, ","only one method ","a shrub? Or ","the existence as uttered forth ","try Harder! ","lights full up with bubbles ","the task of inspiring ","Fight some more! ","do 1,000 pushups "],
+      "4" => ["could it be? ","skip ads now ","end of the day, ","ultimately, a bunch of ","all that matters? ","to care because it's ","detain showdown ","canteen musicians ","used kumquats ","CHEAP rotting "],
+      "5" => ["sold? Not yet ","give me another ","can't, won't, ","slow down a bit ","for the good of ","a pink slip to ","pilot onlooker ","fought through summer ","former trainee ","ballerina pinata "],
+      "6" => ["hamburger presentation ","bagel competition? ","neighborhood mastermind ","games of leisure ",". Courting ","a red rose ","spackled birdhouse ","lightning fingertips ","down darkened corridors ","mysterious blinker "],
+      "7" => ["strides of physical culture, ","the statue did it! ","can't you see? ",". Don't believe that ","have to try ","winking all night long ","broke the bannister ","plumbing emergency ","doctor Nitrogen ","laughing hysterically "],
+      "8" => ["hyena bubble bath ","cantaloupe edgecase ","translate better? Nonsense ","madness in barrels ","shipping contraption ","power kegstand ","sport fishing for ",". Having an average ","weekend lasted just ","for reasons unknown "],
+      "9" => ["sketch tragedy ","real stand-up fish ","trapped in the balloon! ","rising, rising, ","top-shelf nighmares ","DANCING all ","project maypole ","medieval vasectomy ","pulp road trip ","hippie-stained "],
+      "%" => ["believe! Really ","finish it already ","the book was sent ","publisher money ","first advance fulfilled ","broke on the street? ",". Quiet ","saved up for ","living on a boat ",". Alarms wildly "],
       "?" => ["collapsable nursey ","daycare CHEEP ","expensive! How do you ","learn tricks from this ","can't believe it's not ","commercials made me ",". Really? How can you ","amusement festival for retired ","puppets with fanbases say ","not even funny, OK maybe a little "],
       "!" => ["so many, ","great unknown ","astronauts? Who's counting, ","stickler for the ghouls ","sausage banquet ","no delay! SHOP ","new Web Sites glistening ","Movie commando & ",". Can't be - no, you ","filed in slowly, all "],
       "," => ["cheese tubers ","tertiary diarrhea ","unplanned gulping for hours ","swept me off my coccyx ","tailbone ailments ","no longer a dollar store - ","Can't wait! Buy BUY ","sell timeshare CONDO ","ski for winter? ","all-access pass "],
@@ -66,8 +77,6 @@ class Message < ActiveRecord::Base
       ♤: ["tremendous ","crispy ","believer of ","witness ","broken-down ","- but - ","stood ","rocky ","shipwreck ","hambone "]
     }
     if !input[:letter].nil?
-      @message_length_key += 3
-      @message_length_key -= 11 if @message_length_key > 9
       if !phrase_library[input[:letter].to_sym].nil?
         return phrase_library[input[:letter].to_sym][@message_length_key]
       elsif !phrase_library[input[:letter]].nil?
@@ -87,11 +96,13 @@ class Message < ActiveRecord::Base
 
   def encode_message(message)
     # @message_length_key = 0
-    @message_length_key = message.length.to_s[0].to_i
+    @message_length_key = message.length.to_s[-1].to_i
     @message = message
     new_message = []
     message.gsub(" ","‡").gsub(/\n/,"♤").split("").each do |letter|
+      @message_length_key += 1
       new_message << (encode_letter_in_phrase(letter))
+      @message_length_key -= 11 if @message_length_key > 9
     end
     add_spaces(new_message)
     new_message.join("").strip
