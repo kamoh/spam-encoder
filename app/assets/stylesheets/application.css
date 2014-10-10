@@ -15,8 +15,6 @@
  *= require bootstrap-theme
  *= require bootstrap-theme.min
  *= require bootstrap
- *= require bootstrap.min
- *= require 2-col-portfolio
  */
 
 html body {
@@ -34,4 +32,8 @@ textarea {
 p#charcount {
   margin-left: 15%;
   margin-top: -6%
+}
+
+.page-scroll {
+  text-align: center;
 }

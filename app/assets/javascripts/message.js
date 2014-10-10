@@ -1,5 +1,16 @@
 $(document).ready(function(){
 
+  // Scroll to About 
+
+  $('.page-scroll a').bind('click', function(event) {
+      var $anchor = $(this);
+      $('html, body').stop().animate({
+          scrollTop: $($anchor.attr('href')).offset().top
+      }, 1000, 'easeInOutExpo');
+      event.preventDefault();
+  });
+
+
   var charCount;
 
   // Counts input for max 200-character limit
