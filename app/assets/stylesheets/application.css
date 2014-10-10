@@ -12,4 +12,26 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap-theme
+ *= require bootstrap-theme.min
+ *= require bootstrap
+ *= require bootstrap.min
+ *= require 2-col-portfolio
  */
+
+html body {
+  background: #eee;
+}
+
+textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  width: 100%;
+}
+
+p#charcount {
+  margin-left: 15%;
+  margin-top: -6%
+}
