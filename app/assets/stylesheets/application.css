@@ -18,7 +18,9 @@
  */
 
 html body {
-  background: #eee;
+  /*background: #eee;*/
+  background: url('temp.jpg');
+  /*background: #777;*/
 }
 
 textarea {
