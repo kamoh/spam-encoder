@@ -17,7 +17,7 @@
  */
 
 html body {
-  background: url('forest.jpg');
+  background: url('/forest.jpg');
   background-attachment: fixed;
 }
 
