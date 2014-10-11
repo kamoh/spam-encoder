@@ -10,17 +10,15 @@ $(document).ready(function(){
       event.preventDefault();
   });
 
+  // Counts input for max 200-character limit
 
   var charCount;
-
-  // Counts input for max 200-character limit
   
   function updateCharCount() {
     charCount = $("#input_message").val().length;
     $("#charcount").text("Characters left: " + (200-parseInt(charCount)));
     if ($("#input_message").val().length > 200) {
       var content = $("#input_message").val();
-      console.log("too many chars");
     }
   }
 
@@ -45,15 +43,12 @@ $(document).ready(function(){
       },
       dataType: "json",
       success: function(response){
-        console.log("Ajax request successful");
-        console.log("response: "+response);
-        $("#output_message").val(response);
+        $("#output_message").val(response).hide();
+        $("#output_message").fadeIn();
       },
       error: function(response){
-        console.log("Ajax request failed");
-        console.log("response: "+response);
       }
-    })
+    });
   });
 
   // Send message to Rails to be decoded
@@ -69,16 +64,14 @@ $(document).ready(function(){
       },
       dataType: "json",
       success: function(response){
-        console.log("Ajax request successful");
-        console.log("response: "+response);
         $("#input_message").val(response);
+        $("#input_message").val(response).hide();
+        $("#input_message").fadeIn();
         updateCharCount();
       },
       error: function(response){
-        console.log("Ajax request failed");
-        console.log("response: "+response);
       }
-    })
+    });
   });
 
-})
+});

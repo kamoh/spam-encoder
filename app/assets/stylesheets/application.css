@@ -10,7 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  *= require bootstrap-theme
  *= require bootstrap-theme.min
@@ -18,17 +17,14 @@
  */
 
 html body {
-  /*background: #eee;*/
   background: url('forest.jpg');
   background-attachment: fixed;
-  /*background: #777;*/
 }
 
 textarea {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-
   width: 100%;
 }
 
