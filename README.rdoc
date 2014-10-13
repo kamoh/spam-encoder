@@ -2,3 +2,5 @@
 Spam Encoder
 
 App that lets you encode secret messages as spam emails.
+
+{spamencoder.com}[www.spamencoder.com]
