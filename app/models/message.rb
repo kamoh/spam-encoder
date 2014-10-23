@@ -89,9 +89,9 @@ class Message < ActiveRecord::Base
         return character
       end
     else
-      phrase_library.each do |k,v| 
-        v.each do |phrase|
-          message.gsub!(phrase,k.to_s) if message.include?(phrase)
+      phrase_library.each do |char,phrase_list| 
+        phrase_list.each do |phrase|
+          message.gsub!(phrase,char) if message.include?(phrase)
         end
       end
       message
