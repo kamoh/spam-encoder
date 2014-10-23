@@ -4,3 +4,5 @@ Spam Encoder
 App that lets you encode secret messages as spam emails.
 
 {spamencoder.com}[www.spamencoder.com]
+
+{Read about how I made this}[http://kamoh.github.io/blog/2014/10/21/secret-codes-in-spam]
