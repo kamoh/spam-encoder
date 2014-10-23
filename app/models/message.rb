@@ -1,6 +1,11 @@
 class Message < ActiveRecord::Base
 
-  attr_accessor :message
+  attr_accessor :message, :message_length_key
+
+  def initialize(message_input)
+    @message = message_input
+    @message_length_key = message.length.to_s[-1].to_i
+  end
 
   def library(input)
     phrase_library = {
@@ -78,25 +83,23 @@ class Message < ActiveRecord::Base
     }
     if !input[:letter].nil?
       if !phrase_library[input[:letter].to_sym].nil?
-        return phrase_library[input[:letter].to_sym][@message_length_key]
+        return phrase_library[input[:letter].to_sym][message_length_key]
       elsif !phrase_library[input[:letter]].nil?
-        return phrase_library[input[:letter]][@message_length_key]
+        return phrase_library[input[:letter]][message_length_key]
       else
         return input[:letter]
       end
     else
-      phrase_library.each { |k,v| 
+      phrase_library.each do |k,v| 
         v.each do |phrase|
           message.gsub!(phrase,k.to_s) if message.include?(phrase)
         end
-      }
+      end
       message
     end
   end
 
-  def encode_message(message)
-    @message_length_key = message.length.to_s[-1].to_i
-    @message = message
+  def encode_message
     new_message = []
     message.gsub(" ","‡").gsub(/\n/,"♤").split("").each do |letter|
       new_message << (encode_letter_in_phrase(letter))
@@ -121,8 +124,7 @@ class Message < ActiveRecord::Base
     library(letter: letter)
   end
 
-  def decode_message(message)
-    @message = message
+  def decode_message
     @message = remove_spaces
     @message << " "
     message_reverse_engineer.gsub("‡"," ").strip

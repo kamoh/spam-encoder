@@ -6,9 +6,9 @@ class MessagesController < ApplicationController
   def new
     message = params[:message]
     if params[:operation] == 'encode'
-      result = Message.new.encode_message(message)
+      result = Message.new(message).encode_message
     else
-      result = Message.new.decode_message(message)
+      result = Message.new(message).decode_message
     end
     render json: result.to_json
   end
