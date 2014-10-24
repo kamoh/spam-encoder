@@ -102,8 +102,8 @@ class Message < ActiveRecord::Base
     new_message = []
     message.gsub(" ","‡").gsub(/\n/,"♤").split("").each do |letter|
       new_message << (encode_letter_in_phrase(letter))
-      @message_length_key += 1
-      @message_length_key -= 11 if @message_length_key > 9
+      self.message_length_key += 1
+      self.message_length_key -= 11 if self.message_length_key > 9
     end
     add_spaces(new_message)
     new_message.join("").strip
@@ -124,8 +124,8 @@ class Message < ActiveRecord::Base
   end
 
   def decode_message
-    @message = remove_spaces
-    @message << " "
+    self.message = remove_spaces
+    self.message << " "
     message_reverse_engineer.gsub("‡"," ").strip
   end
 
