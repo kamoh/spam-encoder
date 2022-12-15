@@ -1,4 +1,4 @@
-class Message < ActiveRecord::Base
+class Message
 
   attr_accessor :message, :message_length_key
 
