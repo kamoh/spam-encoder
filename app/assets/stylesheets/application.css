@@ -8,3 +8,23 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+html body {
+    background: url("/forest.jpg");
+    background-attachment: fixed;
+}
+
+textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+p#charcount {
+    margin-left: 15%;
+    margin-top: -6%;
+}
+
+.page-scroll {
+    text-align: center;
+}

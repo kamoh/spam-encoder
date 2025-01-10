@@ -1,0 +1,140 @@
+<div class="container theme-showcase" role="main" id="top">
+    <p data-controller="hello">This text will change!</p>
+    <br>
+  <h1>Spam Encoder</h1>
+  <div class="jumbotron">
+    <textarea id="input_message" class="message_box" rows="4" placeholder="Type your message here" maxlength="200"></textarea><br><br>
+    <p>
+      <input class="btn btn-primary btn-lg" type="submit" value="Encode!">
+      <p id="charcount">Characters left: 200</p>
+    </p><br>
+    <textarea id="output_message" class="message_box" rows="8"></textarea><br>
+    <p></p>
+    <input class="btn btn-primary btn-lg" type="submit" value="Decode!">
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-lg-12 page-scroll">
+      <a href="#about">
+        <div id="footer-info" class="btn btn-warning">
+          Made by Ben Serviss
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div id="about" class="page-header">
+    <h1>About</h1>
+    <div class="well">
+      <p>
+        scratch it like just that since Your name! He demanded, for u and&nbsp;<br><br>
+      classes all summer and winter mattress to a trampoline, she said certainly, police Chief Jim Bravura Peanutest butter! rich tapestry of luxury do that, with your time left on Earth&nbsp;<br /><br>
+      calamity , come on! Fill the form and just . For example, Google told me in whispers it takes a real shadow to certainly, savings, a bust ~~! metatarsal panini silky not? Gather your britches binge sniffing bots have been replaced with people . Or, if you follow plus&nbsp;<br><br>
+      the next election cylon certainly, ascent tampon of ultimate ~~! tunnel syndrome fornight fever? muffin app economy Phone Motorola race you to the nuclear cratershell! . For example, plus chemical spill with official manhole bedtime start that fire with your on SALE NOW bagels, and rich tapestry of luxury resting her eyes on the delicate calamity :)plus shipwreck hambone -LOANS PRICE elbows akimbo new and innovative??
+      <br><br>
+      <div id="socials" align="center">
+        <%= link_to 'benserviss.com', "http://www.benserviss.com" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 page-scroll">
+      <a href="#top">
+        <div class="btn btn-warning">
+          Back to the Spamming
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div>
+<br><br>
+<p style="text-align:center"><a href="http://1ms.net/calming-background-400814.html">Background via 1ms.net</a><p/>
+<br><br>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  // $(document).ready(function () {
+    alert('fs');
+    // Scroll to About
+
+    $(".page-scroll a").bind("click", function (event) {
+      var $anchor = $(this);
+      $("html, body")
+        .stop()
+        .animate(
+          {
+            scrollTop: $($anchor.attr("href")).offset().top,
+          },
+          1000,
+          "easeInOutExpo",
+        );
+      event.preventDefault();
+    });
+
+    // Counts input for max 200-character limit
+
+    var charCount;
+
+    function updateCharCount() {
+      charCount = $("#input_message").val().length;
+      $("#charcount").text("Characters left: " + (200 - parseInt(charCount)));
+      if ($("#input_message").val().length > 200) {
+        var content = $("#input_message").val();
+      }
+    }
+
+    $("#input_message").keydown(function (e) {
+      updateCharCount();
+    });
+
+    $("#input_message").keyup(function (e) {
+      updateCharCount();
+    });
+
+    // Send message to Rails to be encoded
+
+    $("input")
+      .eq(0)
+      .click(function () {
+        $.ajax({
+          type: "GET",
+          url: "/messages/new",
+          data: {
+            message: $("#input_message").val(),
+            operation: "encode",
+          },
+          dataType: "json",
+          success: function (response) {
+            $("#output_message").val(response).hide();
+            $("#output_message").fadeIn();
+          },
+          error: function (response) {},
+        });
+      });
+
+    // Send message to Rails to be decoded
+
+    $("input")
+      .eq(1)
+      .click(function () {
+        $.ajax({
+          type: "GET",
+          url: "/messages/new",
+          data: {
+            message: $("#output_message").val(),
+            operation: "decode",
+          },
+          dataType: "json",
+          success: function (response) {
+            $("#input_message").val(response);
+            $("#input_message").val(response).hide();
+            $("#input_message").fadeIn();
+            updateCharCount();
+          },
+          error: function (response) {},
+        });
+      });
+  // });
+</script>
