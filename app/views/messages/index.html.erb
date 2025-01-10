@@ -1,6 +1,5 @@
 <div class="container theme-showcase" role="main" id="top">
-    <p data-controller="hello">This text will change!</p>
-    <br>
+  <br>
   <h1>Spam Encoder</h1>
   <div class="jumbotron">
     <textarea id="input_message" class="message_box" rows="4" placeholder="Type your message here" maxlength="200"></textarea><br><br>
@@ -55,10 +54,8 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-  // $(document).ready(function () {
-    alert('fs');
+  $(document).ready(function () {
     // Scroll to About
-
     $(".page-scroll a").bind("click", function (event) {
       var $anchor = $(this);
       $("html, body")
@@ -136,5 +133,5 @@
           error: function (response) {},
         });
       });
-  // });
+  });
 </script>
