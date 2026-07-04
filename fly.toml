@@ -1,27 +1,13 @@
-# fly.toml app configuration file generated for spam-encoder-2 on 2025-10-30T18:27:50-04:00
+# fly.toml app configuration file generated for spam-encoder-2 on 2026-07-04T09:46:52-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
 app = 'spam-encoder-2'
-primary_region = 'ord'
+primary_region = 'iad'
 console_command = '/rails/bin/rails console'
 
 [build]
-
-[env]
-  DATABASE_URL = 'sqlite3:///data/production.sqlite3'
-  PORT = '8080'
-
-[processes]
-  app = './bin/rake litestream:run ./bin/rails server'
-
-[[mounts]]
-  source = 'data'
-  destination = '/data'
-  auto_extend_size_threshold = 80
-  auto_extend_size_increment = '1GB'
-  auto_extend_size_limit = '10GB'
 
 [http_service]
   internal_port = 8080
@@ -47,3 +33,4 @@ console_command = '/rails/bin/rails console'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
+  memory_mb = 1024
