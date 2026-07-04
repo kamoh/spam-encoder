@@ -68,5 +68,11 @@ USER 1000:1000
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start server via Thruster by default, this can be overwritten at runtime
-EXPOSE 80
-CMD ["./bin/thrust", "./bin/rails", "server"]
+# EXPOSE 80
+# CMD ["./bin/thrust", "./bin/rails", "server"]
+
+# Default server start instructions.  Generally Overridden by fly.toml.
+ENV PORT 3000
+ARG SERVER_COMMAND="bin/rails fly:server"
+ENV SERVER_COMMAND ${SERVER_COMMAND}
+CMD ${SERVER_COMMAND}
